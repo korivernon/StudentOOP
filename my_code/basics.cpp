@@ -106,7 +106,8 @@ void say(std::string s) {
  * */
 void pull_apart_string(string s) {
     for(char& c: s) {
-        cout << c << endl;
+        cout << c;
     }
+    cout << endl;
 }
 
