@@ -20,6 +20,7 @@ $(TEST_DIR)/test_pointers: $(STUDENT_DIR)/pointers.cpp $(TEST_DIR)/test_pointers
 tests: test_hello test_basics
 	tests/test_hello
 	tests/test_basics
+	tests/test_pointers
 
 prod: tests
 	- git commit -a -m "testing new code"
