@@ -27,6 +27,11 @@ Thing** create_array_of_things(int n) {
 }
 
 void print_all_things(Thing** things, int n) {
+    for(int i=0; i<n;i++){
+        cout << things[i] -> val <<" "; // you are printing everything out from the pointer
+                                        // inside of things array
+    }
+    cout << endl; //end the line
 }
 
 void double_all_things(Thing** things, int n) {
