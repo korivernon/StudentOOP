@@ -4,17 +4,17 @@
 using namespace std;
 
 void inc_by_value(int n) {
-    for(int i = 0; i < n;i++) {
-        i++;
-    }
+    n++;
 }
 
 
 void inc_with_pointer(int* iptr) {
+    ++(*iptr);
 }
 
 
 void inc_with_reference(int& n) {
+    n++;
 }
 
 
