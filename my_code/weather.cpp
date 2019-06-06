@@ -11,7 +11,7 @@ Weather::Weather(std::string nm, GPS loc) : station_nm(nm), my_loc(loc) { //you 
     
 }
 
-string Weather::get_name() {
+string Weather::get_name() const {
     return station_nm;
 }
 
@@ -23,9 +23,14 @@ void Weather::set_rating(int new_rating) {
     rating = new_rating;
 }
 
-ostream& operator <<(ostream os, const Weather& w) {
-    int r = w.get_rating();
-    w.set_rating(47);
-    os << w.station_nm << ": rating " << r;
+ostream& operator<<(ostream& os, const GPS& loc){
+    os << " Latitude: " << loc.latitude << " Longitude: "<< loc.longitude; //use the exact names as used in the object; use double arrow to print out every object
+    return os;
+};
+
+ostream& operator<<(ostream& os, const Weather& w) { //to ensure access, copy and paste to reduce animosity
+    //int r = w.get_rating(); no need to do this
+    // w.set_rating(47); we cannot set a rating because set rating is declared as a constant
+    os << "Station Name: " << w.station_nm << ": rating " << w.rating << w.my_loc;
     return os;
 }

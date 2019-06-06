@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    GPS loc = GPS(46.3,67.2);
-    Weather irkutsk = Weather("Irkutsk",loc);
-    cout << irkutsk.get_name() << endl; // if you don't specify to the compiler what to do, it will throw A LOT of errors
+    GPS location = GPS(46.3,67.2);
+    Weather irkutsk = Weather("Irkutsk",location);
+    cout << irkutsk << endl; // if you don't specify to the compiler what to do, it will throw A LOT of errors
 }
