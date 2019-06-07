@@ -36,7 +36,6 @@ void get_wreadings(string filenm, Weather& w) {
 
 
 int main() {
-    Date d = Date(07,03,1803);
     cout << d << endl;
     Weather irkutsk = Weather("Irkutsk", GPS(46.3, 67.2));
     //get_wreadings(get_input_file(), irkutsk);
