@@ -30,9 +30,11 @@ class WReading {
 public:
     WReading(Date dt, double temp, double hum, double ws) :
     date(dt), temperature(temp), humidity(hum), windspeed(ws)
-    {
-    }
-    
+    {}
+    double get_tempF();
+    double get_tempC() {return temperature;}
+    double get_heat_index();
+    double get_wind_chill();
 private:
     Date date;
     double temperature;  // stored temp in C

@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "weather.h"
+#include <math.h>
 
 using namespace std;
 
@@ -22,7 +23,17 @@ void Weather::set_rating(int new_rating) {
 void Weather::add_reading(WReading wr) {
     wreadings.push_back(wr);
 }
+double WReading::get_tempF() {
+    return (temperature*(9/5)+32);}
+// HI = 0.5 * {T + 61.0 + [(T-68.0)*1.2] + (RH*0.094)}
 
+double WReading::get_heat_index(){
+    return ((0.5*(get_tempF()*61+(get_tempF()-68)*1.2)));
+}
+
+double WReading::get_wind_chill(){
+    return (35.74+get_tempF()*(0.6216)-35.75*(pow(windspeed,0.16)+0.4275*get_tempF()*pow(windspeed,0.16)));
+}
 
 ostream& operator<<(ostream& os, const GPS& loc){
     os << "Latitude: " << loc.latitude << ", Longitude: "<< loc.longitude; //use the exact names as used in the object; use double arrow to print out every object
