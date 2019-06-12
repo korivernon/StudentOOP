@@ -9,8 +9,9 @@ const bool DEB = true;
 
 int main() {
     cout << "Input a complex number:\n";
-    Complex c1;
+    Complex c1(3, 2);
     // get a complex from stdin:
+    /*
     cin >> c1;
     if(!cin)
     {
@@ -21,7 +22,7 @@ int main() {
     {
         cout << "c1 = " << c1 << endl;
     }
-
+*/
     Complex c2{43.2, 58.9};
     assert(c2.get_real() == 43.2);
     assert(c2.get_imag() == 58.9);

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+Complex::Complex(double real, double imag): real(real) , imag(imag){}
+
 ostream& operator<< (ostream& os, const Complex& c) {
     os << "Real: " << c.real << ", Imaginary: "<< c.imag << endl;;
     return os;
@@ -16,7 +18,7 @@ istream& operator>> (istream& is, Complex& c) {
     return is;
 }
 Complex::operator bool() const {
-    return(real!=0 && imag!=0);
+    return(real!=0 || imag!=0);
 }
 
 //pre increment
