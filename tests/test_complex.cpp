@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const bool DEBUG = true;
+const bool DEB = true;
 
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
         cerr << "Bad input format\n";
         exit(1);
     }
-    if(DEBUG)
+    if(DEB)
     {
         cout << "c1 = " << c1 << endl;
     }
@@ -26,17 +26,17 @@ int main() {
     assert(c2.get_real() == 43.2);
     assert(c2.get_imag() == 58.9);
 
-    if(DEBUG)
+    if(DEB)
     {
         cout << "c2 = " << c2 << endl;
     }
 
     // see if `Complex` addition works:
-    // Complex c3 = c1 + c2;
+    Complex c3(c1 + c2);
     // see if `Complex` subtraction works:
-
+//
     Complex c4 = Complex();
-    // test pre-increment:
+//    // test pre-increment:
     c4++;
     c4++;
     assert(c4.get_real() == 2);
@@ -53,15 +53,19 @@ int main() {
     (c4) ? cout << "c4 is true\n" : cout << "c4 is false\n";
     assert(c4);
 
-    /*
-     * The next line of code will implicitly
-     * construct a `Complex` out of 14.2 using the default
-     * imaginary component of 0.0.
-     * */
+//    /*
+//     * The next line of code will implicitly
+//     * construct a `Complex` out of 14.2 using the default
+//     * imaginary component of 0.0.
+//     * */
     Complex c5 = 14.2;
     cout << c5 << endl;
     assert(c5.get_real() == 14.2);
     Complex scalar_prod = c5 * 2;
     assert(scalar_prod.get_real() == 28.4);
     assert(scalar_prod.get_imag() == 0.0);
+
+
+
+    
 }

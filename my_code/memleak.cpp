@@ -19,8 +19,8 @@ struct Thing {
     }
 };
 
-const int OUTER = 1000000;
-const int INNER = 1000;
+//const int OUTER = 1000000;
+//const int INNER = 1000;
 
 //int main() {
 //    for(int i = 0; i < OUTER; i++) {
