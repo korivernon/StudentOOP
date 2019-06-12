@@ -18,6 +18,36 @@ Image::Image(int w, int h, std::string flnm)
 
 // copy constructor:
 Image::Image(const Image& img2) {
+    //when we make an object and we want to pass something in
+    copy_fields(img2);
+}
+
+// destructor
+Image::~Image() {
+    if (image_buf){
+        delete[] image_buf;
+    };
+}
+
+// assignment operator:
+// when we have two things and we want to have them equal to one another.. we have to make sure something is not equal to itself.
+Image& Image::operator=(const Image& img2) {
+    
+    if(&img2 != this) {
+        //check for self assignment
+        delete []image_buf;
+        this -> copy_fields(img2);
+        
+    }
+    return *this;
+    }
+
+int Image::image_sz() {
+    return width * height;
+}
+
+
+void Image::copy_fields(const Image& img2) {
     height = img2.height;
     width = img2.width;
     filename = img2.filename;
@@ -26,29 +56,11 @@ Image::Image(const Image& img2) {
         image_buf[i] = img2.image_buf[i];
     }
 }
-
-// destructor
-Image::~Image() {
-    if (image_buf != nullptr) delete image_buf;
-}
-
-// assignment operator:
-Image& Image::operator=(const Image& img2) {
-    return *this;
-}
-
-int Image::image_sz() {
-    return width * height;
-}
-
-
-void Image::copy_fields(const Image& img2) {
-    image_buf = new char(img2.width*img2.height);
-    
-    for (int i = 0; i < img2.width*img2.height; i++) {
-        Image img ( img2.width * i , img2.height * i,img2.filename ) ;
-    }
-}
+//    image_buf = new char(img2.width*img2.height);
+//
+//    for (int i = 0; i < img2.width*img2.height; i++) {
+//        image_buf[i] = img2.image_buf[i];
+//    }
 
 /*
  * Setting `display() = 0` here makes this an abstract
