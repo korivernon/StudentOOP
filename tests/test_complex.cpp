@@ -34,6 +34,8 @@ int main() {
 
     // see if `Complex` addition works:
     Complex c3(c1 + c2);
+    cout << "c1: " << c1 << endl;
+    cout << "c1*c2: " << c1*2 << endl;
     // see if `Complex` subtraction works:
 //
     Complex c4 = Complex();
@@ -66,7 +68,4 @@ int main() {
     assert(scalar_prod.get_real() == 28.4);
     assert(scalar_prod.get_imag() == 0.0);
 
-
-
-    
 }

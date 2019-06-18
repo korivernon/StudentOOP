@@ -5,10 +5,11 @@
 
 using namespace std;
 
+// calling constructor using definition
 Complex::Complex(double real, double imag): real(real) , imag(imag){}
 
 ostream& operator<< (ostream& os, const Complex& c) {
-    os << "Real: " << c.real << ", Imaginary: "<< c.imag << endl;;
+    os << "Real: " << c.real << ", Imaginary: " << c.imag << endl;;
     return os;
 }
 
@@ -24,12 +25,12 @@ Complex::operator bool() const {
 //pre increment
 Complex& Complex::operator++() {
     ++real;
-    return *this; //what is this.. pointer to current object
+    return *this; //returns a pointer to itself. this = "self's" address
 }
 
 //post increment
 Complex Complex::operator++(int dummy) {
-    Complex temp = *this;
+    Complex temp = *this; //syntax for post increment
     real++;
     return temp; //can't return this - you're returning before you change it.
     
