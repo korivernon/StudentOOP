@@ -18,10 +18,11 @@ MyVec::MyVec() {
 
 MyVec::MyVec(const MyVec& v2) {
     capacity = v2.capacity;
-    sz = v2.size();
-    int* data = new int[capacity];
-    for (int i = 0; i < size(); i++){
+    sz = v2.sz;
+    data = new int[capacity];
+    for (int i = 0; i < v2.sz; i++){
         data[i] = v2.data[i];
+        //this -> push_back(v2.data[i]);
     }
 }
 
@@ -33,6 +34,11 @@ MyVec& MyVec::operator=(const MyVec& v2) {
     if (&v2 != this) {
         delete [] data;
         capacity = v2.capacity;
+        sz = v2.sz;
+        data = new int[capacity]; //new arr
+        for(int i = 0; i < v2.sz; i++) {
+            data[i] = v2.data[i];
+        }
     }
     return *this; //delete the current object if the address is mot equal; return *this at the end.
 }
@@ -43,6 +49,16 @@ MyVec& MyVec::operator=(const MyVec& v2) {
  * the same order. (Thus they must be the same size.)
  * */
 bool operator==(MyVec& v1, MyVec& v2) {
+    if ((v1.size() != v2.size())) {
+        cout << "SIZE NOT EQUAL";
+        return false;
+    }
+    for (int i = 0; i < v1.size() ; i++) {
+        if (v1[i] != v2[i]) {
+            cout << "SOMETHING DIFFERENT";
+            return false;
+        }
+    }
     return true;
 }
 
@@ -50,7 +66,7 @@ bool operator==(MyVec& v1, MyVec& v2) {
  * Puts an element at the back of a vector.
  * */
 void MyVec::push_back(int val) {
-    if (sz == capacity) {
+    if (sz >= capacity) {
         capacity *= 2; //extend array size.
         int* new_data = new int[capacity];
         
@@ -59,8 +75,12 @@ void MyVec::push_back(int val) {
             
         }
         delete[] data;
+        //new_data[sz++] = val; //increment the size of the vector
+        data = new_data;
     }
-    data[sz++] = val; //increment the size of the vector
+    //cout << "SIZE: " << sz << endl;
+    data[sz++] = val;
+    //cout << "SIZE: " << sz << endl;
 }
 
 /*
@@ -82,6 +102,7 @@ int& MyVec::operator[](int i) {
  * A: We added a wrapper so that we can expand.
  * • SA Vector is To a Pointer as a Pointer is to a Reference.
  * Q: How do you find the length of a C-Style Array?
+ * A: loop thru arr & count
  * Q: What did we gain with the vector?
  * A: With a vector we gained the ability to ask for size and grow in size.
  * Q: Why don't compilers do range-checking?

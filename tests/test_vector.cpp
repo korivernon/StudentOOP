@@ -5,6 +5,7 @@
 using namespace std;
 
 int copy_vector(MyVec v) {
+    //cout << "SIZE: " << v.size();
     MyVec local_v = v;
     return local_v.size();
 }
@@ -31,6 +32,12 @@ int main() {
     assert(v2 == v);
 
     v2 = v3;
+//    cout << "\n\nV2: ";
     print_vector(v2);
+//    cout << "\n\nV3: ";
+//    print_vector(v3);
+//    cout << "\nV2 SIZE: " << v2.size() << endl;
+//    cout << "V3 SIZE: " << v3.size() << endl;
+    
     assert(v2 == v3);
 }
