@@ -3,7 +3,9 @@
 
 #include <string>
 #include <vector>
-
+const int HIGH = 3;
+const int MED = 2;
+const int LOW = 1;
 class Image {
 public:
     Image(int w, int h, std::string flnm);
@@ -34,6 +36,28 @@ private:
     void copy_fields(const Image& img2);
 };
 
+class Gif : public Image {
+public:
+    Gif(int w, int h, std::string flnm, int cl=0) : Image(w,h,flnm), compression_level(cl) {}
+    std::string display(std::string s);
+private:
+    int compression_level;
+};
+
+class Png : public Image {
+public:
+    Png(int w, int h, std::string flnm) : Image(w,h,flnm) {}
+    std::string display(std::string s);
+};
+
+class Jpeg: public Image {
+public:
+    Jpeg(int w, int h, std::string flnm, int q=HIGH) : Image(w,h,flnm), quality(q) {}
+    void display(std::string s);
+private:
+    int quality;
+};
+
 struct GPS {
     double latitude;
     double longitude;
@@ -58,8 +82,8 @@ private:
 class WReading {
     friend std::ostream& operator<<(std::ostream& os, const WReading& wr);
 public:
-    WReading(Date dt, double temp, double hum, double ws) :
-    date(dt), temperature(temp), humidity(hum), windspeed(ws)
+    WReading(Date dt, double temp, double hum, double ws, Image* image = nullptr) :
+    date(dt), temperature(temp), humidity(hum), windspeed(ws), image(image)
     {}
     double get_tempF();
     double get_tempC() {return temperature;}
@@ -70,6 +94,7 @@ private:
     double temperature;  // stored temp in C
     double humidity;
     double windspeed;
+    Image* image; //image type
 };
 
 
@@ -93,6 +118,5 @@ private:
     GPS my_loc;
     int rating = UNRATED;
 };
-
 
 #endif

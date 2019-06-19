@@ -32,6 +32,16 @@ Image::Image(const Image& img2) {
     copy_fields(img2);
 }
 
+string Jpeg::display(string s) {
+    return "Displaying Image: " + s;
+}
+string Png::display(string s) {
+    return "Displaying Image: " + s;
+}
+string Gif::display(string s) {
+    return "Displaying Image: " + s;
+}
+
 // destructor
 Image::~Image() {
     if (image_buf){
