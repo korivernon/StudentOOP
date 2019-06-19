@@ -32,16 +32,6 @@ Image::Image(const Image& img2) {
     copy_fields(img2);
 }
 
-string Jpeg::display(string s) {
-    return "Displaying Image: " + s;
-}
-string Png::display(string s) {
-    return "Displaying Image: " + s;
-}
-string Gif::display(string s) {
-    return "Displaying Image: " + s;
-}
-
 // destructor
 Image::~Image() {
     if (image_buf){
@@ -76,8 +66,8 @@ int Image::image_sz() {
  * Setting `display() = 0` here makes this an abstract
  * class that can't be implemented.
  * */
-string Image::display(std::string s) {
-    return "Displaying image " + s;
+void Image::display() {
+    cout << "Displaying image " <<endl;
 }
 Weather::Weather(string nm, GPS loc) : station_nm(nm), my_loc(loc) {} //you must declare the name of the string and you must initialize a constructor.
 string Weather::get_name() const { return station_nm;}
@@ -88,6 +78,17 @@ void Weather::add_reading(WReading wr) {wreadings.push_back(wr);}
 
 double WReading::get_tempF() { return (temperature*(9/5)+32);}
 // HI = 0.5 * {T + 61.0 + [(T-68.0)*1.2] + (RH*0.094)}
+
+void WReading::display_images() const {
+    if (!image) cout << "No Image for Reading" << date << endl;
+    else image->display();
+}
+
+void Weather::display_images() {
+    for(WReading wr: wreadings) {
+        wr.display_images();
+    }
+}
 
 double WReading::get_heat_index(){return ((0.5*(get_tempF()*61+(get_tempF()-68)*1.2)));}
 
@@ -129,3 +130,15 @@ ostream& operator<<(ostream& os, const Weather& w) { //to ensure access, copy an
     }
     return os;
 }
+
+void Jpeg::display() {
+    cout << "Displaying Image JPEG" <<endl;
+}
+void Png::display() {
+    cout << "Displaying Image PNG" <<endl;
+}
+void Gif::display() {
+    cout << "Displaying Image GIF" <<endl;
+}
+
+

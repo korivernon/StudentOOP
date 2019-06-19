@@ -19,7 +19,7 @@ public:
      * Setting `display() = 0` here makes this an abstract
      * class that can't be implemented.
      * */
-    std::string display(std::string s);
+    virtual void display();
     /*
      * If we don't want virtual method lookup, we
      * could just declare:
@@ -39,7 +39,7 @@ private:
 class Gif : public Image {
 public:
     Gif(int w, int h, std::string flnm, int cl=0) : Image(w,h,flnm), compression_level(cl) {}
-    std::string display(std::string s);
+    void display();
 private:
     int compression_level;
 };
@@ -47,13 +47,13 @@ private:
 class Png : public Image {
 public:
     Png(int w, int h, std::string flnm) : Image(w,h,flnm) {}
-    std::string display(std::string s);
+    void display();
 };
 
 class Jpeg: public Image {
 public:
     Jpeg(int w, int h, std::string flnm, int q=HIGH) : Image(w,h,flnm), quality(q) {}
-    void display(std::string s);
+    void display();
 private:
     int quality;
 };
@@ -89,6 +89,7 @@ public:
     double get_tempC() {return temperature;}
     double get_heat_index();
     double get_wind_chill();
+    void display_images() const;
 private:
     Date date;
     double temperature;  // stored temp in C
@@ -112,6 +113,7 @@ public:
     int get_rating() const;
     void set_rating(int new_rating);
     void add_reading(WReading wr);
+    void display_images();
 private:
     std::vector<WReading> wreadings;
     std::string station_nm;
