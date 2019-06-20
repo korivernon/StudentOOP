@@ -140,5 +140,3 @@ void Png::display() {
 void Gif::display() {
     cout << "Displaying Image GIF" <<endl;
 }
-
-
