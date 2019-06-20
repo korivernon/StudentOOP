@@ -20,9 +20,13 @@ int main() {
     
     add_at_front(head, 4);
     assert(head->data == 4);
+    add_at_front(head, 69);
     
     print_list(cout, head);
-    
+    del_head(head);
+    print_list(cout, head);
+    del_tail(head);
+    print_list(cout, head);
     /*
      cout << "List: \n";
      print_list(cout, head);

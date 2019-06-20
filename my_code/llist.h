@@ -22,11 +22,11 @@ void print_list(std::ostream& os, const Node* curr);
 Node* last(Node* head);
 void add_at_end(Node*& head, int d);
 void add_at_front(Node*& head, int d);
+bool del_head(Node*& head);
+bool del_tail(Node*& prev_next);
 
 /*
  * These are coming:
-bool del_head(Node*& head);
-bool del_tail(Node** prev_next);
 Node* duplicate(Node* head);
 Node* reverse(Node* curr, Node* prev=nullptr);
 */
