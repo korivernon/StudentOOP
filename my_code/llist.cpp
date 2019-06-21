@@ -69,12 +69,13 @@ Node* last(Node* head) {
  * Delete the first node and attach head to the 2nd node:
  * */
 bool del_head(Node*& head) {
-    if (head==nullptr) {
+    if (!head) {
         return false;
     }
     else {
+        Node* temp = head;
         head = head ->next;
-        free(head);
+        delete temp;
     }
     return true;
 }
@@ -83,11 +84,28 @@ bool del_head(Node*& head) {
  * Delete the last node and set prev->next to nullptr:
  LOL I CAN'T DO THIS WITHOUT MAKING IT A POINTER TING... PLEASE HELP
  * */
-bool del_tail(Node*& prev_next){
-    prev_next = prev_next -> next;
-    free(prev_next);
+bool del_tail(Node*& curr){
+    if (!curr) {
+        return false;
+    }
+    else {
+        if (curr->next == nullptr) {
+            delete curr;
+            curr = nullptr;
+        }
+        else {
+            del_tail(curr->next);
+        }
+    }
     return true;
 }
+
+///MY CODE///
+//bool del_tail(Node*& prev_next){
+//    prev_next = prev_next -> next;
+//    delete prev_next;
+//    return true;
+//}
 
 /*
  * Duplicate the entire list -- you must not share memory!
@@ -104,10 +122,18 @@ Node* duplicate(Node* head) {
  * Reverse the list: return a brand new list with everything reversed.
  * */
 // yeah so i dont know how to do this one! help please
-Node* reverse(Node* curr, Node* prev=nullptr){
-    while (curr != nullptr) {
-        prev -> next = curr -> next;
-        
+Node* reverse(Node* curr, Node* new_next){
+    if (curr == nullptr) return new_next;
+    else {
+        new_next = new Node(curr->data,new_next);
+        return reverse(curr->next,new_next);
+        //the current->next is the beginning elem
+        //the Node(curr->data) is the data inside the next elem,
+        //the new_next is the next elem
     }
-    return curr;
+}
+//put list2 onto the end of list1
+Node* join(Node*& list1, Node* list2) {
+    last(list1) -> next = list2;
+    return list1;
 }
