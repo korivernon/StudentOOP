@@ -15,7 +15,7 @@ Image::Image(int w, int h, std::string flnm)
     filename = flnm;
     image_buf = new char[image_sz()]; //new:heap
 }
-
+//the name of a c-array is a pointer.
 void Image::copy_fields(const Image& img2) {
     height = img2.height;
     width = img2.width;
@@ -47,7 +47,6 @@ Image& Image::operator=(const Image& img2) {
         //check for self assignment
         delete []image_buf;
         this -> copy_fields(img2);
-        
     }
     return *this;
     }

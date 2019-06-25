@@ -3,12 +3,23 @@
 
 using namespace std;
 
+MyVec::Iterator MyVec::begin() const {return MyVec::Iterator(data);} //this is going to call the beginning
+MyVec::Iterator MyVec::end() const {return MyVec::Iterator(data+sz);} //we want the memory location right after because it will stop at the last element without calling the last element. 
+
+MyVec::MyVec(int sz, int val) : sz{sz} {
+    data = new int[sz*CAPACITY_MULT]; //initialize new array
+    for(int i = 0; i < sz;i++) {
+        //fill the array
+        data[i] = val;
+    }
+}
+
 void print_vector(const MyVec& v) {
     for(int i=0; i < v.size();i++) {
         cout << v[i] << ' ';
     }
+    cout<<endl;
 }
-
 
 MyVec::MyVec() {
     sz = 0;
@@ -42,8 +53,6 @@ MyVec& MyVec::operator=(const MyVec& v2) {
     }
     return *this; //delete the current object if the address is mot equal; return *this at the end.
 }
-
-
 /*
  * == is true when every element of the vectors are the same in
  * the same order. (Thus they must be the same size.)
@@ -60,6 +69,23 @@ bool operator==(MyVec& v1, MyVec& v2) {
         }
     }
     return true;
+}
+
+bool operator!=(MyVec& v1, MyVec& v2) {
+    if ((v1.size()==v2.size())) {
+        for (int i = 0; i < v1.size();i++){
+            if (v1[i] != v2[i]) {
+                return true;
+            }
+        }
+        //this is entered if the loop finishes and it does not hit the for loop
+        cout<<"SIZE IS EQUAL";
+        return false;
+    }
+    //this is entered if the sizes are not equal
+    else {
+        return true;
+    }
 }
 
 /*

@@ -5,7 +5,6 @@
 using namespace std;
 
 int copy_vector(MyVec v) {
-    //cout << "SIZE: " << v.size();
     MyVec local_v = v;
     return local_v.size();
 }
@@ -26,18 +25,21 @@ int main() {
         v3.push_back(i);
     }
     assert(v3[1] == 18);
-
+    
     MyVec v2 = v;
     print_vector(v2);
     assert(v2 == v);
-
-    v2 = v3;
-//    cout << "\n\nV2: ";
-    print_vector(v2);
-//    cout << "\n\nV3: ";
-//    print_vector(v3);
-//    cout << "\nV2 SIZE: " << v2.size() << endl;
-//    cout << "V3 SIZE: " << v3.size() << endl;
     
+    v2 = v3;
+    print_vector(v2);
     assert(v2 == v3);
+    
+    for (int i : v3) {
+        assert((i % 9) == 0);
+    }
+    
+    MyVec v4 = MyVec(10, 20);
+    for (int i : v4) {
+        assert(i == 20);
+    }
 }
