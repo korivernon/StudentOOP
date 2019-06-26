@@ -6,15 +6,18 @@
 //  Copyright © 2019 Kori Vernon. All rights reserved.
 //
 
-#ifndef templ_ll_hpp
-#define templ_ll_hpp
+#ifndef templ_ll_h
+#define templ_ll_h
 
-#include <stdio.h>
 #include <iostream>
-#include <fstream>
 
 
 template <typename DATA>
+/*
+ So, in order to be able to control the data types that are available in the template,
+ you must delcare 'template <typename DATA>' at every instance that you call data,
+ including pointers, and all that wonderful stuff.
+ */
 class Node {
 public:
     Node(DATA d, Node* n=nullptr) : data(d),next(n){}
