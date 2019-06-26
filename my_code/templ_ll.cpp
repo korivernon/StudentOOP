@@ -28,7 +28,7 @@ ostream& operator<<(ostream& os, const Node<DATA>* nd) {
  * Add a node to the end of a list.
  * */
 template <typename DATA>
-void add_at_end(Node<DATA>*& head, int d) {
+void add_at_end(Node<DATA>*& head, DATA d) {
     if (!head) {
         head = new Node<DATA>(d,nullptr);
     }
@@ -58,7 +58,7 @@ void print_list(ostream& os, const Node<DATA>* curr) {
  * Add a node at the front of a linked list.
  * */
 template <typename DATA>
-void add_at_front(Node<DATA>*& head, int d) {
+void add_at_front(Node<DATA>*& head, DATA d) {
     head = new Node<DATA>(d, head);
 }
 

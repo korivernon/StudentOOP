@@ -37,10 +37,10 @@ template <typename DATA>
 Node<DATA>* last(Node<DATA>* head);
 
 template <typename DATA>
-void add_at_end(Node<DATA>*& head, int d);
+void add_at_end(Node<DATA>*& head, DATA d);
 
 template <typename DATA>
-void add_at_front(Node<DATA>*& head, int d);
+void add_at_front(Node<DATA>*& head, DATA d);
 
 /*
  * Delete the first node and attach head to the 2nd node:
