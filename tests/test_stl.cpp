@@ -73,6 +73,12 @@ class Cat {
  * */
 bool is_odd(int n) { return (n % 2) != 0; }
 
+class IsOdd {
+public:
+    bool operator()(int n) { return (n % 2) != 0; }
+    //we can overload parentheses
+};
+
 /*
  * Or, we could have a *functor*!
  * */
@@ -141,7 +147,7 @@ int main() {
      * Testing an int list:
      * */
     int ilen = 8;
-    int iptr[] = { 16, 32, 64, 128, 2, 4, 8, 17 };
+    int iptr[] = { 16, 32, 64, 9, 2, 4, 8, 17 };
     list<int> ilist(iptr, iptr + ilen);
     /*
      * Our print can work for lists as well as vectors:
@@ -160,7 +166,10 @@ int main() {
     /*
      * Let's experiment with *iterators* a bit!
      * */
-
+    list<int>::iterator odd_iter = find_if(ilist.begin(), ilist.end(),is_odd);
+    cout << "First odd number in ilist is: " << *odd_iter << endl;
+    odd_iter++;
+    cout << "Second odd number in ilist is: " << *odd_iter << endl;
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
      * */
@@ -168,11 +177,26 @@ int main() {
     /*
      * Here we are going to pass functor `IsOdd` to `find_if()`.
      * */
+    
+    IsOdd odd_functor = IsOdd();
+    
+    cout << "Is 6 odd? " << odd_functor(6) << endl;
+    cout << "Is 7 odd? " << odd_functor(7) << endl;
+    
+    list<int>::iterator odd_iter2 = find_if(ilist.begin(), ilist.end(),odd_functor);
+    cout << "First functor odd number in ilist is: " << *odd_iter2 << endl;
+    odd_iter2++;
+    cout << "Second functor odd number in ilist is: " << *odd_iter2 << endl;
 
     /*
      * Here we are going to pass a *lambda* to `find_if()`.
      * The lambda starts with `[]`. The point here is to show
      * that this form and the one above are identical in effect.
+     --> lambda anon func
      * */
+    list<int>::iterator odd_iter3 = find_if(ilist.begin(), ilist.end(), [](int n) {return (n%2) == 1;});
+    cout << "First lambda odd number in ilist is: " << *odd_iter3 << endl;
+    odd_iter3++;
+    cout << "Second lambda odd number in ilist is: " << *odd_iter3 << endl;
     // cout << "First lambda odd number in list is: " << *if_iter3 << endl;
 }
