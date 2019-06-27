@@ -49,6 +49,7 @@ int main() {
     for (int i = 0; i < v3.size(); i++) {
         assert((v3[i] % 9) == 0);
     }
+    
     MyVec<string> sv = MyVec<string>(10, "Hello");
     for (int i = 0; i < sv.size(); i++) {
         assert(sv[i] == "Hello");

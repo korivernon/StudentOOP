@@ -19,24 +19,21 @@ const int CAPACITY_MULT = 2;
 template <typename T>
 class MyVec {
 public:
-    MyVec() {
-        sz = 0;
+    MyVec() : sz(0){
         capacity = DEF_CAPACITY;
         data = new T[DEF_CAPACITY];
     }
     
-    MyVec(int sz, T val=T()) {
+    MyVec(int sz, T val) {
         data = new T[sz*CAPACITY_MULT]; //initialize new array
         for(int i = 0; i < sz;i++) {
-            //fill the array
             data[i] = val;
         }
     }
     
     void push_back(T val) {
-        sz++;
-        if (sz > capacity) {
-            std::cout << "Increasing capacity\n";
+        if (sz == capacity) {
+            cout << "Increasing capacity\n";
             T* old_data = data;
             data = new T[capacity * CAPACITY_MULT];
             for (int i = 0; i < sz; i++) {
@@ -45,7 +42,7 @@ public:
             capacity *= CAPACITY_MULT;
             delete [] old_data;
         }
-        data[sz - 1] = val;
+        data[sz++] = val;
     }
     int size() const { return sz; }
     
