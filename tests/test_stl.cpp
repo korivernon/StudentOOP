@@ -17,7 +17,7 @@ using namespace std;
 template <typename T>
 void print_vec(const string& name, vector <T> container) {
     cout<< name << ": ";
-    for (T& item: container) {
+    for (const T& item: container) {
         cout << item << " ";
     }
     cout<<endl;
@@ -32,7 +32,7 @@ void print_vec(const string& name, vector <T> container) {
 template <typename T>
 void print_list(const string& name, list <T> container) {
     cout<< name << ": ";
-    for (T& item: container) {
+    for (const T& item: container) {
         
         cout << item << " ";
     }
@@ -47,7 +47,7 @@ void print_list(const string& name, list <T> container) {
 template <typename T>
 void print(const string& name, T container) {
     cout<< name << ": ";
-    for( auto& item: container) {
+    for(const auto& item: container) { //since it's not being changed, keep as const. 
         //auto is more widely used in more situations.
         //without auto we have to have a second template type.
         cout << item << " ";
