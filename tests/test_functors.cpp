@@ -158,21 +158,20 @@ int main() {
     
 
     // then lambdas -- use several functions from cmath here:
-    d = square_func(0, [](double arg) { return sin(arg); });
+    d = square_func(0, [](double arg) { return sin(arg);});
     cout << "Square of sin 0 = " << d << endl;
-    d = square_func(1, [](double arg) { return sin(arg); });
+    // -->
+    d = square_func(1, [](double arg) { return sin(arg);});
     cout << "Square of sin 1 = " << d << endl;
-    
+    // -->
     cout << "\nFunction " << ++counter <<endl;
     cout << "~~~~~~~~~~~ "<<endl;
     d = tan_func(1, [](double my_input ){ return tan(my_input);});
     cout << "(LAMBDA) tan of 1 PLUS tan of 1" << d << endl;
-    
+    // -->
     cout << "\nFunction " << ++counter <<endl;
     cout << "~~~~~~~~~~~ "<<endl;
-    d = cube_f(4, [](double my_input) {
-        return my_input;
-    });
+    d = cube_f(4, [](double my_input) {return my_input;});
     cout << "(LAMBDA) 4 cubed: " << d << endl;
     
     
