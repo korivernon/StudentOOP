@@ -66,7 +66,7 @@ class Bst {
         if (d == data ) return this; //note
         else if (d < data) {
             if (!left) {
-                return left;
+                return nullptr;
             }
             else {
                 return left -> search(d);
@@ -74,7 +74,7 @@ class Bst {
         }
         else {
             if (!right) {
-                return right;
+                return nullptr;
             }
             else {
                 return right -> search(d);
@@ -93,7 +93,8 @@ class Bst {
             }
             else {
                 //recursively call and call insert onto left.
-                return (*left).insert(d); //don't do this bc --?
+                return left -> insert(d);
+                //return (*left).insert(d); //don't do this bc --?
             }
         }
         else {
