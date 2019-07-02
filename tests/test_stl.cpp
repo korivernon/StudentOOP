@@ -168,7 +168,7 @@ int main() {
      * */
     list<int>::iterator odd_iter = find_if(ilist.begin(), ilist.end(),is_odd);
     cout << "First odd number in ilist is: " << *odd_iter << endl;
-    odd_iter++;
+    odd_iter = find_if(++odd_iter, ilist.end(),is_odd);
     cout << "Second odd number in ilist is: " << *odd_iter << endl;
     /*
      * Here we are going to pass `is_odd()` to `find_if()`.
@@ -185,7 +185,7 @@ int main() {
     
     list<int>::iterator odd_iter2 = find_if(ilist.begin(), ilist.end(),odd_functor);
     cout << "First functor odd number in ilist is: " << *odd_iter2 << endl;
-    odd_iter2++;
+    odd_iter2 = find_if(++odd_iter2, ilist.end(),odd_functor);
     cout << "Second functor odd number in ilist is: " << *odd_iter2 << endl;
 
     /*
@@ -196,7 +196,8 @@ int main() {
      * */
     list<int>::iterator odd_iter3 = find_if(ilist.begin(), ilist.end(), [](int n) {return (n%2) == 1;});
     cout << "First lambda odd number in ilist is: " << *odd_iter3 << endl;
-    odd_iter3++;
+    odd_iter3 = find_if(++odd_iter3, ilist.end(),odd_functor);
+    //use find if and preincrement in order to find the odd iter
     cout << "Second lambda odd number in ilist is: " << *odd_iter3 << endl;
     // cout << "First lambda odd number in list is: " << *if_iter3 << endl;
 }
