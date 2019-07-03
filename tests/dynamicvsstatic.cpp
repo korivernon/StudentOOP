@@ -10,7 +10,7 @@
 using namespace std;
 
 class Animal { public:
-    virtual void roar() {
+    void roar() {
         //dynamic binding.. the compiler only knows this is an animal pointer
         cout << "Huh?"<< endl ;
     }
@@ -24,9 +24,22 @@ class Tiger: public Animal
     }
 };
 
+class Sheep: public Animal {
+public:
+    void roar() {
+        cout << "Baaaaaaaaah" << endl;
+    }
+};
+
 int main() {
     Tiger t;
     t.roar();
+    Sheep s;
+    s.roar();
     Animal* aptr = &t;
     aptr -> roar(); //we have a pointer we can't access it.
+    aptr = &s; //when called on a pointer without virtual, it sees what it's pointed to
+    aptr->roar();
+    //if a function is pure virtual, the base function CANNOT be created. 
+    
 }
