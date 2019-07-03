@@ -76,10 +76,10 @@ int main() {
     cout << "sin 0 == " << d << endl;
     //FIBONACI
     Fib fib = Fib();
-    long long int FIB_NUM;
+    long long int FIB_NUM = 4;
     cout << "What number do you want to take the fibonaci sum to?: ";
-    cin >> FIB_NUM;
     long long int f;
+    //cin >> FIB_NUM;
     try {
         f = fib(FIB_NUM);
         cout << "fib(" << FIB_NUM << ") = " << f << endl;
@@ -105,8 +105,8 @@ int main() {
     cout << "\nFunction " << ++counter <<endl;
     cout << "~~~~~~~~~~~ "<<endl;
     cout<< "Input a number to take the natural log of it: ";
-    int num;
-    cin >> num;
+    int num = 9;
+    //cin >> num;
     LN ln = LN();
     //Try and except block to handle exceptions for negative numbers
     try {
